@@ -19,6 +19,10 @@ for path in glob.glob('scratch-gui/build/**/*.js', recursive=True):
   with open(path, 'w') as f:
     f.write(contents)
 
+with open('scratch-gui/build/editor.html','r') as f:
+  contents = f.read()
+  contents = contents.replace('</head>','<script src="https://cdn.jsdelivr.net/npm/eruda"></script><script>eruda.init();</script></head>')
+
 os.remove('scratch-gui/build/sw.js')
 os.remove('scratch-gui/build/manifest.webmanifest')
 os.remove('scratch-gui/build/fullscreen.html')
